@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cara's 2nd Birthday – A Magical Island Adventure</title>
+<style>
+:root{--turq:#20C5C9;--deep:#087E8B;--aqua:#7CE7E8;--coral:#FF8066;--sand:#F5DEB3;--cream:#FFF8E7;--pink:#FF6B9A;--palm:#287A4B;--gold:#FFD166;--ink:#3b2a20;--sh:0 10px 30px rgba(8,126,139,.25)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Trebuchet MS','Segoe UI',Arial,sans-serif;color:var(--ink);line-height:1.6;overflow-x:hidden;background:var(--deep)}
+h1,h2,h3{font-family:Georgia,'Palatino Linotype',serif;font-weight:700;line-height:1.2}
+button,input,select,textarea{font:inherit}
+:focus-visible{outline:3px solid var(--deep);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* background */
+#env{position:fixed;inset:0;z-index:-1;background:linear-gradient(#ff9a76 0%,#ffd166 28%,#bff4f0 46%,#20C5C9 60%,#087E8B 100%);overflow:hidden}
+.sun{position:absolute;top:14%;left:50%;width:130px;height:130px;margin-left:-65px;border-radius:50%;background:radial-gradient(#fff6c8,#FFD166 60%,#ffb347);box-shadow:0 0 90px 30px rgba(255,209,102,.7);animation:pulse 5s ease-in-out infinite}
+.cloud{position:absolute;height:34px;width:120px;border-radius:40px;background:rgba(255,255,255,.75);filter:blur(1px);animation:drift linear infinite}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:50px;height:50px;top:-22px;left:18px}.cloud:after{width:40px;height:40px;top:-14px;left:60px}
+.mount{position:absolute;bottom:38%;left:0;width:100%;height:150px}
+.wave{position:absolute;left:0;width:200%;height:90px;bottom:0;animation:wave 14s linear infinite;will-change:transform}
+.w1{bottom:26%;opacity:.55;animation-duration:18s}.w2{bottom:18%;opacity:.7;animation-duration:13s;animation-direction:reverse}.w3{bottom:9%;opacity:.85;animation-duration:10s}.w4{bottom:0;animation-duration:8s;animation-direction:reverse}
+.palm{position:absolute;bottom:30%;width:110px;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
+.sparkle{position:absolute;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;animation:tw 3s ease-in-out infinite}
+.fl{position:fixed;top:-40px;font-size:22px;animation:fall linear infinite;pointer-events:none;z-index:0;opacity:.85}
+.bub{position:absolute;bottom:-20px;border-radius:50%;border:2px solid rgba(255,255,255,.7);animation:rise linear infinite}
+@keyframes wave{0%{transform:translate3d(0,0,0)}100%{transform:translate3d(-50%,0,0)}}@keyframes sway{50%{transform:rotate(4deg)}0%,100%{transform:rotate(-3deg)}}
+@keyframes drift{from{transform:translateX(-200px)}to{transform:translateX(110vw)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}@keyframes rise{to{transform:translateY(-70vh);opacity:0}}
+@keyframes tw{50%{opacity:.1;transform:scale(.4)}}@keyframes pulse{50%{transform:scale(1.06)}}
+@keyframes flt{50%{transform:translateY(-10px)}}
+/* intro */
+#intro{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;background:linear-gradient(#087E8B,#20C5C9 60%,#7CE7E8);transition:transform 1.4s cubic-bezier(.7,0,.3,1),opacity 1.2s}
+#intro h1{font-size:clamp(2.2rem,9vw,4.5rem);text-shadow:0 4px 18px rgba(0,0,0,.3)}
+#intro p{font-size:clamp(1.1rem,4vw,1.6rem);margin:12px 0 28px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+#intro .wave{opacity:.5}
+body.opened #intro{transform:translateY(-110%);opacity:0;pointer-events:none;visibility:hidden;transition:transform 1.4s cubic-bezier(.7,0,.3,1),opacity 1.2s,visibility 0s 1.4s}
+body:not(.opened){overflow:hidden}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 26px;border:0;border-radius:40px;cursor:pointer;font-weight:700;letter-spacing:.04em;color:#fff;text-decoration:none;background:linear-gradient(135deg,var(--coral),var(--pink));box-shadow:0 6px 18px rgba(255,107,154,.45);transition:transform .2s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}.btn.alt{background:linear-gradient(135deg,var(--turq),var(--deep));box-shadow:0 6px 18px rgba(8,126,139,.4)}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+.pulse{animation:pulse 2s infinite}
+/* layout */
+main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:24px 16px 120px}
+section{margin:34px 0;padding:34px 22px;border-radius:30px;background:rgba(255,248,231,.9);backdrop-filter:blur(8px);box-shadow:var(--sh);border:2px solid rgba(255,255,255,.7);text-align:center;position:relative}
+section h2{color:var(--deep);font-size:clamp(1.5rem,5.5vw,2.2rem);margin-bottom:14px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s,transform .9s}.reveal.in{opacity:1;transform:none}
+.name{font-size:clamp(2.1rem,9.5vw,4rem);margin:12px 0;background:linear-gradient(90deg,var(--coral),var(--pink),var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 2px 4px rgba(255,209,102,.8))}
+.two{display:flex;align-items:center;justify-content:center;gap:14px;font-family:Georgia,serif;font-size:clamp(1.8rem,8vw,3rem);color:var(--coral);font-weight:700}
+.two b{font-size:clamp(5rem,26vw,9rem);line-height:1;color:var(--gold);-webkit-text-stroke:3px var(--coral);text-shadow:0 8px 0 var(--coral),0 0 30px var(--gold);animation:flt 3s infinite}
+.date{font-size:clamp(1.2rem,5vw,1.7rem);color:var(--deep);font-weight:700}
+.lead{max-width:620px;margin:14px auto}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;margin-top:26px;justify-items:center}
+.frame{width:min(250px,70vw);aspect-ratio:1;border-radius:50%;padding:8px;background:conic-gradient(var(--gold),var(--pink),var(--turq),var(--gold));box-shadow:0 0 28px rgba(255,209,102,.9);position:relative;animation:flt 5s ease-in-out infinite}
+.frame>div{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--aqua);border:4px solid var(--cream)}
+.frame img,.frame svg{width:100%;height:100%;object-fit:cover;display:block}
+.frame:before{content:"🌺";position:absolute;top:-10px;left:6px;font-size:2.2rem;z-index:2}.frame:after{content:"🌺";position:absolute;bottom:-6px;right:4px;font-size:2rem;z-index:2}
+.cap{margin-top:10px;font-weight:700;color:var(--deep)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:18px}
+.card{padding:20px 16px;border-radius:22px;background:linear-gradient(160deg,#fff,#e9fbfb);border:2px solid var(--aqua);box-shadow:0 6px 16px rgba(8,126,139,.15)}
+.card .ic{font-size:2.2rem}.card h3{color:var(--coral);font-size:1rem;letter-spacing:.15em;margin:4px 0}.card p{font-weight:700;color:var(--deep);overflow-wrap:anywhere}
+.card a{color:var(--deep)}.pin{display:inline-block;animation:flt 1.4s infinite}
+.acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px}
+.dress{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;font-size:2.4rem;margin:14px 0}
+.note{font-style:italic}
+/* form */
+form{max-width:520px;margin:18px auto 0;text-align:left;display:grid;gap:14px}
+label{font-weight:700;color:var(--deep);display:block;margin-bottom:4px}
+input[type=text],input[type=number],select,textarea{width:100%;padding:12px 14px;border-radius:14px;border:2px solid var(--aqua);background:#fff;color:var(--ink);min-height:48px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:#b3261e;font-weight:700;min-height:1.2em}
+#rsvpDone{margin-top:18px;padding:20px;border-radius:22px;background:#fff;border:3px dashed var(--coral)}
+#rsvpDone textarea{margin:10px 0;min-height:140px;font-size:.85rem}
+/* cake */
+.cake{width:230px;margin:10px auto;position:relative}
+.flame{transform-origin:50% 100%;transition:opacity .8s,transform .8s;animation:fl .4s ease-in-out infinite alternate}
+.off .flame{opacity:0;transform:scale(.2);animation:none}.off .smoke{opacity:1}.smoke{opacity:0;transition:opacity 1s .3s}
+@keyframes fl{to{transform:scale(1.15,1.25) rotate(3deg)}}
+.cake.unlit .flame{opacity:0}
+#wishMsg{font-family:Georgia,serif;font-size:1.5rem;color:var(--coral);min-height:2.2em;font-weight:700}
+/* island */
+#isle{width:100%;max-width:520px;height:auto;border-radius:24px;background:linear-gradient(#bff4f0,#20C5C9);box-shadow:var(--sh)}
+#isle [role=button]{cursor:pointer;transition:transform .2s}#isle [role=button]:hover,#isle [role=button]:focus-visible{transform:scale(1.15) translateY(-3px)}
+#isle [role=button]{transform-box:fill-box;transform-origin:center}
+#isleMsg{min-height:3em;font-weight:700;color:var(--deep);margin-top:12px}
+#canoe{animation:sail 12s ease-in-out infinite alternate}@keyframes sail{from{transform:translateX(-20px)}to{transform:translateX(150px)}}
+/* gallery */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-top:16px}
+.grid button{border:0;padding:6px;border-radius:18px;background:linear-gradient(135deg,var(--gold),var(--pink));cursor:pointer;aspect-ratio:1;box-shadow:0 5px 14px rgba(0,0,0,.2);transition:transform .25s}
+.grid button:hover{transform:rotate(-2deg) scale(1.04)}
+.grid img{width:100%;height:100%;object-fit:cover;border-radius:13px;display:block}
+.ph{padding:24px;border:3px dashed var(--aqua);border-radius:20px;grid-column:1/-1;font-weight:700;color:var(--deep)}
+#lb{position:fixed;inset:0;z-index:200;background:rgba(0,30,40,.92);display:none;align-items:center;justify-content:center;padding:16px}
+#lb.on{display:flex}#lb img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:14px;border:4px solid var(--cream)}
+#lb button{position:absolute;width:48px;height:48px;border-radius:50%;border:0;font-size:1.6rem;cursor:pointer;background:var(--cream);color:var(--deep)}
+#lbx{top:14px;right:14px}#lbp{left:10px;top:50%}#lbn{right:10px;top:50%}
+/* closing */
+#close{background:linear-gradient(#ff9a76,#ffd166 60%,#fff8e7);overflow:hidden}
+#close h2{color:#8a3b1f}
+/* player */
+#player{position:fixed;z-index:90;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:min(310px,calc(100vw - 24px));background:rgba(255,248,231,.96);border-radius:22px;padding:10px 12px;box-shadow:var(--sh);border:2px solid var(--aqua);display:none}
+body.opened #player.has{display:block}
+#player .top{display:flex;align-items:center;gap:8px}
+#shell{font-size:1.7rem}#player.playing #shell{animation:spin 4s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+#ttl{flex:1;font-size:.82rem;font-weight:700;color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#player .ctl{display:flex;gap:6px;align-items:center;margin-top:6px}
+#player .ctl button,#plToggle{width:40px;height:40px;border:0;border-radius:50%;background:var(--turq);color:#fff;cursor:pointer;font-size:1rem}
+#player input[type=range]{flex:1;min-width:0}
+#pl{list-style:none;margin-top:6px;max-height:130px;overflow:auto;font-size:.8rem}
+#pl button{width:100%;text-align:left;border:0;background:none;padding:8px;cursor:pointer;border-radius:8px;color:var(--ink)}
+#pl button.cur{background:var(--aqua);font-weight:700}
+/* owner */
+#owner{position:fixed;z-index:300;inset:10px;max-width:520px;margin:auto;height:fit-content;max-height:92vh;overflow:auto;background:#fff;border-radius:20px;padding:20px;box-shadow:0 0 0 100vmax rgba(0,0,0,.55);display:none;text-align:left}
+#owner.on{display:block}#owner h2{color:var(--deep);margin-bottom:8px}#owner .blk{margin:12px 0;padding:10px;border:2px solid var(--aqua);border-radius:12px}
+#owner small{display:block;color:#555;margin-top:4px}
+@media(max-width:480px){section{padding:26px 14px}.row2{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.fl,.bub,.cloud{display:none}.wave{animation:wave 40s linear infinite!important}.balloon{animation:floatUp 26s linear infinite!important}}
+body.hidden-tab *{animation-play-state:paused!important}
+
+[hidden]{display:none!important}
+.balloon-container{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.balloon{position:absolute;bottom:-90px;width:42px;height:52px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;animation:floatUp 10s linear infinite;will-change:transform}
+.balloon::after{content:"";position:absolute;bottom:-12px;left:50%;width:2px;height:14px;background:rgba(255,255,255,.75);transform:translateX(-50%)}
+@keyframes floatUp{0%{transform:translateY(0) translateX(-15px) rotate(0);opacity:.95}25%{transform:translateY(-30vh) translateX(15px) rotate(5deg)}50%{transform:translateY(-60vh) translateX(-15px) rotate(-4deg)}75%{transform:translateY(-90vh) translateX(15px) rotate(4deg)}100%{transform:translateY(-125vh) translateX(-15px) rotate(-5deg);opacity:0}}
+main{padding:14px 12px 90px;max-width:760px}
+.shell{background:rgba(255,248,231,.93);border-radius:28px;box-shadow:var(--sh);border:2px solid rgba(255,255,255,.7);overflow:hidden}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);background:linear-gradient(135deg,var(--turq),var(--deep))}
+.tabs button{border:0;background:none;color:#fff;padding:10px 4px;min-height:52px;cursor:pointer;font-weight:700;font-size:.78rem;line-height:1.25;border-bottom:4px solid transparent}
+.tabs button[aria-selected=true]{background:rgba(255,255,255,.2);border-bottom-color:var(--gold)}
+.tabs button span{display:block;font-size:1.3rem}
+.shell section{margin:0;padding:16px 14px 20px;background:none;box-shadow:none;border:0;backdrop-filter:none;border-radius:0}
+.shell section h2{font-size:clamp(1.25rem,5vw,1.8rem);margin-bottom:8px}
+.shell .name{font-size:clamp(1.7rem,7.5vw,2.8rem);margin:4px 0}
+.shell .two{font-size:clamp(1.2rem,5vw,1.8rem);gap:8px}
+.shell .two b{font-size:clamp(3.2rem,15vw,5rem);-webkit-text-stroke:2px var(--coral);text-shadow:0 5px 0 var(--coral),0 0 20px var(--gold)}
+.shell .photos{grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.shell .frame{width:min(130px,36vw)}.shell .frame:before,.shell .frame:after{font-size:1.4rem}
+.shell .cap{font-size:.85rem;margin-top:4px}
+.shell .lead{margin:8px auto;font-size:.95rem}
+.shell .cards{gap:10px;margin-top:8px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.shell .card{padding:12px}.shell .card .ic{font-size:1.6rem}
+.shell .acts{margin-top:12px}.shell .btn{min-height:46px;padding:10px 20px}
+.subs{display:flex;gap:8px;justify-content:center;margin-bottom:10px;flex-wrap:wrap}
+.sub{border:2px solid var(--turq);background:#fff;color:var(--deep);border-radius:30px;padding:8px 16px;min-height:44px;font-weight:700;cursor:pointer}
+.sub[aria-pressed=true]{background:var(--turq);color:#fff}
+.cake{width:170px}.cake svg{width:100%;height:auto}#wishMsg{font-size:1.2rem;min-height:1.8em}
+#isle{max-width:400px}.grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;max-height:300px;overflow:auto}
+.modal{position:fixed;inset:0;z-index:150;display:none;align-items:center;justify-content:center;background:rgba(0,40,50,.65);padding:14px}
+.modal.on{display:flex}
+.modal>div{position:relative;width:min(480px,100%);max-height:92vh;overflow:auto;background:var(--cream);border-radius:26px;padding:26px 18px 20px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);border:3px solid var(--gold)}
+.modal h2{color:var(--deep);font-size:clamp(1.4rem,6vw,1.9rem);margin-bottom:8px}
+.mx{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:var(--aqua);color:var(--deep);font-size:1.2rem;cursor:pointer}
+#ytCtl{position:fixed;left:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:90;display:none;gap:8px}
+body.opened #ytCtl.has{display:flex}
+#ytCtl button{width:48px;height:48px;border-radius:50%;border:2px solid #fff;background:var(--turq);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:var(--sh)}
+@media(max-width:380px){.tabs button{font-size:.68rem}}
+</style>
+</head>
+<body>
+<div id="env" aria-hidden="true">
+ <div class="sun"></div>
+ <div class="cloud" style="top:10%;animation-duration:70s"></div><div class="cloud" style="top:22%;animation-duration:100s;animation-delay:-40s;transform:scale(.7)"></div>
+ <svg class="mount" viewBox="0 0 1200 150" preserveAspectRatio="none"><path d="M0 150V90Q150 20 300 80T520 60Q640 10 760 70T1000 50Q1120 30 1200 80V150Z" fill="#287A4B" opacity=".75"></path><path d="M0 150V115Q200 70 380 110T760 100T1200 105V150Z" fill="#1d5e39"></path></svg>
+ <svg class="palm" style="left:3%" viewBox="0 0 100 160"><path d="M50 160Q44 90 56 40" stroke="#68432F" stroke-width="7" fill="none"></path><g fill="#287A4B"><path d="M56 40Q20 20 0 45Q30 32 56 40Z"></path><path d="M56 40Q90 15 100 40Q75 30 56 40Z"></path><path d="M56 40Q30 0 18 10Q40 12 56 40Z"></path><path d="M56 40Q80 0 92 12Q68 14 56 40Z"></path></g></svg>
+ <svg class="palm" style="right:4%;animation-delay:-2s;width:90px" viewBox="0 0 100 160"><path d="M50 160Q58 90 44 40" stroke="#68432F" stroke-width="7" fill="none"></path><g fill="#287A4B"><path d="M44 40Q10 15 0 40Q25 30 44 40Z"></path><path d="M44 40Q80 20 100 45Q70 32 44 40Z"></path><path d="M44 40Q60 0 78 8Q56 12 44 40Z"></path><path d="M44 40Q20 0 8 12Q30 14 44 40Z"></path></g></svg>
+ <svg class="wave w1" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 40Q150 0 300 40T600 40T900 40T1200 40V90H0Z" fill="#7CE7E8"></path></svg>
+ <svg class="wave w2" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 40Q150 0 300 40T600 40T900 40T1200 40V90H0Z" fill="#20C5C9"></path></svg>
+ <svg class="wave w3" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 40Q150 0 300 40T600 40T900 40T1200 40V90H0Z" fill="#14a3ad"></path></svg>
+ <svg class="wave w4" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 40Q150 0 300 40T600 40T900 40T1200 40V90H0Z" fill="#087E8B"></path></svg>
+</div>
+
+<div id="intro" role="dialog" aria-label="Welcome">
+ <svg class="wave" style="bottom:0;height:140px" viewBox="0 0 1200 90" preserveAspectRatio="none"><path d="M0 40Q150 0 300 40T600 40T900 40T1200 40V90H0Z" fill="#fff"></path></svg>
+ <h1>🌺 Aloha! 🌺</h1>
+ <p>A Tropical Pool Party Is Calling...</p>
+ <p style="font-weight:700">Join Us for Cara's 2nd Birthday!</p>
+ <button class="btn pulse" id="openBtn" type="button">OPEN YOUR INVITATION</button>
+</div>
+
+<div class="balloon-container" aria-hidden="true"><i class="balloon" style="left:6%;background:#FF6B9A;animation-duration:11s;animation-delay:-0s"></i><i class="balloon" style="left:17%;background:#FFD166;animation-duration:14s;animation-delay:-5s"></i><i class="balloon" style="left:29%;background:#20C5C9;animation-duration:10s;animation-delay:-2s"></i><i class="balloon" style="left:42%;background:#FF8066;animation-duration:15s;animation-delay:-8s"></i><i class="balloon" style="left:55%;background:#FF6B9A;animation-duration:12s;animation-delay:-4s"></i><i class="balloon" style="left:67%;background:#FFD166;animation-duration:13s;animation-delay:-9s"></i><i class="balloon" style="left:79%;background:#20C5C9;animation-duration:11s;animation-delay:-1s"></i><i class="balloon" style="left:91%;background:#FF8066;animation-duration:14s;animation-delay:-6s"></i></div>
+<main>
+<div class="shell">
+ <div class="tabs" role="tablist" aria-label="Invitation sections">
+  <button role="tab" id="t0" aria-selected="true" aria-controls="p0"><span>🌺</span>Event Info</button>
+  <button role="tab" id="t1" aria-selected="false" aria-controls="p1" tabindex="-1"><span>🏊</span>Venue &amp; Dress</button>
+  <button role="tab" id="t2" aria-selected="false" aria-controls="p2" tabindex="-1"><span>🎂</span>Fun</button>
+  <button role="tab" id="t3" aria-selected="false" aria-controls="p3" tabindex="-1"><span>✉️</span>RSVP</button>
+ </div>
+ <section class="panel" id="p0" role="tabpanel" aria-labelledby="t0">
+  <div id="invite">
+  <h2>Splash Into Cara's 2nd Birthday Celebration!</h2>
+  <h1 class="name">Cara Celestine Miñoza Tariao</h1>
+  <div class="two"><span>Turning</span><b aria-hidden="true">2</b><span>TWO!</span></div>
+  <p class="date">🌊 Sunday, October 18, 2026 🌊</p>
+  <p class="date" style="font-size:1.1rem">3:00 PM to 7:00 PM</p>
+  <p class="lead">Two years of love, laughter, and endless joy! Our little princess Cara Celestine is turning TWO. Join us for a tropical party by the pool and in the event hall!</p>
+  <div class="photos">
+   <figure><div class="frame"><div id="caraBox"></div></div><figcaption class="cap">Cara 🌺</figcaption></figure>
+   <figure><div class="frame"><div id="moanaBox"></div></div><figcaption class="cap">Little Moana 🌺</figcaption></figure>
+  </div>
+  <p class="lead"><b>📍 Metropolis Cebu Subdivision (Clubhouse &amp; Pool)</b></p>
+  <div class="acts">
+   <a class="btn alt" id="dirBtn" href="https://www.google.com/maps/search/?api=1&query=9WR9%2BW6X%2C%20Daffodil%20St%2C%20Cebu%20City%2C%206000%20Cebu" target="_blank" rel="noopener noreferrer"><span class="pin">📍</span> GET DIRECTIONS</a>
+   <button class="btn" id="calBtn" type="button">📅 ADD TO CALENDAR</button>
+  </div>
+  </div>
+ </section>
+ <section class="panel" id="p1" role="tabpanel" aria-labelledby="t1" hidden>
+  <h2>🏊 Clubhouse &amp; Pool Celebration 🏊</h2>
+  <div class="cards">
+   <div class="card"><div class="ic">📅</div><h3>DATE &amp; TIME</h3><p>Sunday, October 18, 2026</p><p>3:00 PM to 7:00 PM</p></div>
+   <div class="card"><div class="ic">🏊</div><h3>VENUE</h3><p>Metropolis Cebu Subdivision (Clubhouse &amp; Pool)</p></div>
+<div class="card"><div class="ic">👒</div><h3>Dress Code</h3><p>Moana-inspired tropical attire, casual wear, or swimwear!</p></div>
+
+   <div class="card" style="grid-column:1/-1"><div class="ic pin">📍</div><h3>LOCATION</h3><p><a href="https://www.google.com/maps/search/?api=1&query=9WR9%2BW6X%2C%20Daffodil%20St%2C%20Cebu%20City%2C%206000%20Cebu" target="_blank" rel="noopener noreferrer">9WR9+W6X, Daffodil St, Cebu City, 6000 Cebu</a></p></div>
+  </div>
+  <div class="dress" style="font-size:2rem;margin:8px 0" aria-hidden="true"><span>👕</span><span>👗</span><span>👒</span><span>🩴</span><span>🩱</span><span>🌺</span></div>
+  <p class="lead">Bring your swimsuits and towels if you'd like to take a dip in the pool! Dressing up is completely optional – just come as you are and enjoy the party.</p>
+ </section>
+ <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+  <div class="subs"><button class="sub" type="button" data-s="s0" aria-pressed="true">🎂 Cake</button><button class="sub" type="button" data-s="s1" aria-pressed="false">🏝️ Island</button><button class="sub" type="button" data-s="s2" aria-pressed="false">🌸 Gallery</button></div>
+  <div class="sp" id="s0">
+   <div class="cake unlit" id="cake">
+    <svg viewBox="0 0 230 250" role="img" aria-label="Two-tier birthday cake with two candles">
+     <ellipse cx="115" cy="238" rx="105" ry="10" fill="rgba(0,0,0,.15)"/>
+     <rect x="15" y="150" width="200" height="85" rx="16" fill="#FF8066"/><path d="M15 165q25 20 50 0t50 0 50 0 50 0v-12H15z" fill="#FFF8E7"/>
+     <rect x="50" y="95" width="130" height="62" rx="14" fill="#FF6B9A"/><path d="M50 108q16 16 32 0t32 0 32 0 34 0v-10H50z" fill="#FFF8E7"/>
+     <text x="115" y="215" font-size="26" text-anchor="middle">🌺 🐚 🌺</text><text x="115" y="140" font-size="22" text-anchor="middle">🌴 🌸 🌴</text>
+     <rect x="86" y="62" width="9" height="36" rx="3" fill="#20C5C9"/><rect x="135" y="62" width="9" height="36" rx="3" fill="#FFD166"/>
+     <g class="flame"><path d="M90.5 60q-9-14 0-26q9 12 0 26z" fill="#FFB020"/><path d="M90.5 58q-4-8 0-15q4 7 0 15z" fill="#fff6a0"/></g>
+     <g class="flame" style="animation-delay:.15s"><path d="M139.5 60q-9-14 0-26q9 12 0 26z" fill="#FFB020"/><path d="M139.5 58q-4-8 0-15q4 7 0 15z" fill="#fff6a0"/></g>
+     <g class="smoke" fill="none" stroke="#999" stroke-width="2" opacity=".6"><path d="M90 50q-6-8 0-16"/><path d="M140 50q6-8 0-16"/></g>
+    </svg>
+   </div>
+   <div id="wishMsg" role="status" aria-live="polite"></div>
+   <div class="acts"><button class="btn" id="wishBtn" type="button">🎂 Make a Birthday Wish!</button><button class="btn alt" id="blowBtn" type="button" hidden>BLOW OUT THE CANDLES</button><button class="btn" id="relightBtn" type="button" hidden>🔥 RELIGHT THE CANDLES</button></div>
+  </div>
+  <div class="sp" id="s1" hidden>
+   <p>Tap the treasures on the island!</p>
+   <svg id="isle" viewBox="0 0 520 300" aria-label="Interactive island">
+    <path d="M0 220Q130 200 260 220T520 220V300H0Z" fill="#20C5C9" opacity=".7"/>
+    <path d="M90 240Q130 150 260 150T430 240Z" fill="#F5DEB3"/><path d="M150 200Q200 130 260 150T370 200Z" fill="#287A4B" opacity=".8"/>
+    <g role="button" tabindex="0" aria-label="Palm tree"><path d="M200 200Q196 150 208 100" stroke="#68432F" stroke-width="8" fill="none"/><path d="M208 100Q170 80 150 105Q185 95 208 100Z M208 100Q245 75 262 100Q232 92 208 100Z M208 100Q190 60 170 62Q195 70 208 100Z" fill="#287A4B"/></g>
+    <g role="button" tabindex="0" aria-label="Palm tree"><path d="M320 205Q326 155 312 115" stroke="#68432F" stroke-width="8" fill="none"/><path d="M312 115Q280 95 262 118Q290 108 312 115Z M312 115Q345 92 365 115Q335 108 312 115Z M312 115Q325 75 345 78Q322 85 312 115Z" fill="#287A4B"/></g>
+    <g role="button" tabindex="0" aria-label="Hibiscus flower"><text x="250" y="205" font-size="40" text-anchor="middle">🌺</text></g>
+    <g role="button" tabindex="0" aria-label="Seashell"><text x="140" y="245" font-size="32" text-anchor="middle">🐚</text></g>
+    <g role="button" tabindex="0" aria-label="Starfish"><text x="385" y="248" font-size="32" text-anchor="middle">⭐</text></g>
+    <g role="button" tabindex="0" aria-label="Hibiscus flower"><text x="300" y="235" font-size="30" text-anchor="middle">🌸</text></g>
+    <g id="canoe"><g role="button" tabindex="0" aria-label="Canoe"><path d="M40 268q40 22 90 0z" fill="#68432F"/><path d="M85 268V235l24 26z" fill="#FF8066"/></g></g>
+   </svg>
+   <div id="isleMsg" role="status" aria-live="polite"></div>
+  </div>
+  <div class="sp" id="s2" hidden>
+   <h2>🌸 Cara's Little Island Memories 🌸</h2>
+   <div class="grid" id="grid"></div>
+  </div>
+ </section>
+ <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3" hidden>
+  <h2>🌺 Will You Join Our Pool Party? 🌺</h2>
+  <p>We'd love to celebrate this special day with you!</p>
+  <div class="acts"><button class="btn pulse" id="openRsvp" type="button">✉️ RSVP NOW</button></div>
+  <h2 style="margin-top:22px">🌺 Mahalo for Being Part of Cara's Special Day! 🌺</h2>
+  <p class="lead">Your presence will make our little princess's birthday even more magical.</p>
+  <p style="font-family:Georgia,serif;font-size:1.25rem;color:var(--coral);font-weight:700">With love, Cara and Family</p>
+ </section>
+</div>
+</main>
+<div class="modal" id="inviteModal" role="dialog" aria-modal="true" aria-labelledby="imT"><div>
+ <button class="mx" type="button" data-close aria-label="Close">✕</button>
+ <h2 id="imT">You're Invited to Cara's 2nd Birthday Party! 🌺</h2>
+ <p style="font-size:1.1rem;margin:10px 0 18px">Join us for a tropical pool &amp; clubhouse celebration!</p>
+ <div class="acts"><button class="btn pulse" id="rsvpNow" type="button">RSVP NOW</button><button class="btn alt" type="button" data-close>SEE DETAILS</button></div>
+</div></div>
+<div class="modal" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="rmT"><div>
+ <button class="mx" type="button" data-close aria-label="Close">✕</button>
+ <h2 id="rmT">🌺 Will You Join Our Pool Party? 🌺</h2>
+ <p>We'd love to celebrate this special day with you!</p>
+ <form id="rsvpForm" novalidate>
+  <div><label for="gName">Guest Name(s)</label><input id="gName" type="text" placeholder="e.g., The Moana Family" autocomplete="name" required></div>
+  <div class="row2"><div><label for="gAd">Adults</label><input id="gAd" type="number" min="0" value="1" inputmode="numeric"></div><div><label for="gCh">Children</label><input id="gCh" type="number" min="0" value="0" inputmode="numeric"></div></div>
+  <div><label for="gAtt">Attendance</label><select id="gAtt"><option>Yes, We'll Be There! ⛵</option><option>Sorry, We Can't Make It</option></select></div>
+  <div><label for="gMsg">Message for Cara (Optional)</label><textarea id="gMsg" rows="3" placeholder="Happy Birthday!"></textarea></div>
+  <div class="err" id="rsvpErr" role="alert"></div>
+  <button class="btn" id="rsvpBtn" type="submit">SEND RSVP</button>
+ </form>
+ <div id="rsvpDone" hidden tabindex="-1" aria-live="polite">
+  <h3 style="color:var(--coral)">🎉 Your RSVP is almost complete! 🎉</h3>
+  <p>Gmail should open in a new tab (or your email app) with your RSVP details. Please press Send to submit your response to Cara's family.</p>
+  <p style="margin-top:8px;font-size:.9rem">Nothing opened? Use the buttons below, or copy the message and email it to <a href="mailto:ramontariao@gmail.com">ramontariao@gmail.com</a>.</p>
+  <textarea id="rsvpText" readonly aria-label="Prepared RSVP message"></textarea>
+  <div class="acts" style="margin-top:0"><a class="btn" id="gmailAgain" href="#" target="_blank" rel="noopener noreferrer">✉️ OPEN GMAIL</a><a class="btn alt" id="mailAgain" href="#">📧 EMAIL APP</a><button class="btn alt" id="copyBtn" type="button">📋 COPY MESSAGE</button></div>
+  <p id="copyOk" role="status" style="margin-top:8px;font-weight:700;color:var(--palm)"></p>
+ </div>
+</div></div>
+<div id="ytWrap" style="position:fixed;left:-9999px;top:0;width:1px;height:1px;overflow:hidden" aria-hidden="true"><div id="ytHost"></div></div>
+<div id="ytCtl" role="group" aria-label="Background music"><button id="ytPlay" type="button" aria-label="Pause music">⏸</button><button id="ytMute" type="button" aria-label="Mute music">🔊</button></div>
+
+<div id="player" aria-label="Music player" class="">
+ <div class="top"><span id="shell" aria-hidden="true">🐚</span><span id="ttl">Happy Birthday to You - Instrumental – no audio file added</span><button id="plToggle" type="button" aria-expanded="false" aria-label="Show playlist">☰</button></div>
+ <div class="ctl"><button id="pPrev" type="button" aria-label="Previous track">⏮</button><button id="pPlay" type="button" aria-label="Play">▶</button><button id="pNext" type="button" aria-label="Next track">⏭</button><input id="pSeek" type="range" min="0" max="100" value="0" aria-label="Progress"></div>
+ <div class="ctl"><button id="pMute" type="button" aria-label="Mute">🔊</button><input id="pVol" type="range" min="0" max="1" step=".05" value=".7" aria-label="Volume"></div>
+ <ul id="pl" hidden=""></ul>
+ <audio id="aud" preload="none"></audio>
+</div>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer"><button id="lbx" aria-label="Close">✕</button><button id="lbp" aria-label="Previous photo">‹</button><img id="lbi" alt=""><button id="lbn" aria-label="Next photo">›</button></div>
+<canvas id="cv" style="position:fixed;inset:0;pointer-events:none;z-index:250" aria-hidden="true" width="375" height="800"></canvas>
+
+
+<script id="cfg" type="application/json">{"final":false,"cara":"Cara.jpeg","moana":"Moana.jpg","gallery":["pic1.jpeg","pic2.jpeg","pic3.jpeg","pic4.jpeg","pic5.jpeg","pic6.jpeg","pic7.jpeg","pic8.jpeg","pic9.jpeg","pic10.jpeg"],"tracks":[]}</script>
+<script>
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i)};
+var FIXED=Object.freeze({name:"Cara Celestine Miñoza Tariao",date:"Sunday, October 18, 2026",time:"3:00 PM to 7:00 PM",venue:"Metropolis Cebu Subdivision (Clubhouse & Pool)",loc:"9WR9+W6X, Daffodil St, Cebu City, 6000 Cebu",email:"ramontariao@gmail.com"});
+var CFG;try{CFG=JSON.parse($('cfg').textContent)}catch(e){CFG={}}
+CFG.gallery=CFG.gallery||[];CFG.tracks=CFG.tracks||[];
+var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+var OWNER=!CFG.final&&location.hash==='#owner';
+
+/* ambient decor */
+(function(){var e=$('env'),h='';
+for(var i=0;i<14;i++)h+='<i class="sparkle" style="left:'+(Math.random()*100)+'%;top:'+(Math.random()*60)+'%;animation-delay:'+(Math.random()*3)+'s"></i>';
+for(var j=0;j<6;j++){var s=8+Math.random()*14;h+='<i class="bub" style="left:'+(Math.random()*100)+'%;width:'+s+'px;height:'+s+'px;animation-duration:'+(8+Math.random()*8)+'s;animation-delay:'+(Math.random()*8)+'s"></i>'}
+e.insertAdjacentHTML('beforeend',h);
+var f='',em=['🌺','🍃','🌸','🌿','🐚'];
+for(var k=0;k<9;k++)f+='<span class="fl" aria-hidden="true" style="left:'+(Math.random()*100)+'%;animation-duration:'+(14+Math.random()*12)+'s;animation-delay:'+(-Math.random()*20)+'s">'+em[k%5]+'</span>';
+document.body.insertAdjacentHTML('beforeend',f);
+addEventListener('scroll',function(){e.style.transform='translateY('+(-Math.min(scrollY*.03,40))+'px)'},{passive:true});
+})();
+document.addEventListener('visibilitychange',function(){document.body.classList.toggle('hidden-tab',document.hidden)});
+
+/* confetti (capped) */
+var cv=$('cv'),cx=cv.getContext('2d'),parts=[],raf=0;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+function confetti(n,gold){if(reduce)return;var cols=gold?['#FFD166','#fff6c8','#ffb347']:['#FF6B9A','#FFD166','#20C5C9','#FF8066','#7CE7E8','#287A4B'];
+n=Math.min(n,90);for(var i=0;i<n;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*200,y:innerHeight*.45,vx:(Math.random()-.5)*12,vy:-Math.random()*13-3,r:Math.random()*6,s:4+Math.random()*6,c:cols[i%cols.length],l:120});
+if(parts.length>220)parts.splice(0,parts.length-220);if(!raf)raf=requestAnimationFrame(tick)}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);parts=parts.filter(function(p){return p.l>0});
+parts.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.vx*=.99;p.r+=.2;p.l--;cx.globalAlpha=Math.min(1,p.l/30);cx.fillStyle=p.c;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);cx.restore()});
+raf=parts.length?requestAnimationFrame(tick):0;if(!raf)cx.clearRect(0,0,cv.width,cv.height)}
+
+/* modals + tabs */
+var mLast=null,closed=false;
+function openModal(id){mLast=document.activeElement;var m=$(id);m.classList.add('on');var f=m.querySelector('input,button:not(.mx)');if(f)f.focus()}
+function closeModals(){var any=document.querySelector('.modal.on');document.querySelectorAll('.modal.on').forEach(function(m){m.classList.remove('on')});if(any&&mLast&&mLast.focus)mLast.focus()}
+document.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',closeModals)});
+document.querySelectorAll('.modal').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m)closeModals()})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('lb').classList.contains('on'))closeModals()});
+$('rsvpNow').onclick=function(){$('inviteModal').classList.remove('on');openModal('rsvpModal')};
+$('openRsvp').onclick=function(){openModal('rsvpModal')};
+var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+function showTab(i,f){tabs.forEach(function(t,k){var on=k===i;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;$('p'+k).hidden=!on});if(f)tabs[i].focus();if(i===3&&document.body.classList.contains('opened')&&!closed){closed=true;confetti(40)}}
+tabs.forEach(function(t,i){t.onclick=function(){showTab(i)};t.onkeydown=function(e){if(e.key==='ArrowRight')showTab((i+1)%4,1);if(e.key==='ArrowLeft')showTab((i+3)%4,1)}});
+document.querySelectorAll('.sub').forEach(function(b){b.onclick=function(){document.querySelectorAll('.sub').forEach(function(x){var on=x===b;x.setAttribute('aria-pressed',String(on));$(x.dataset.s).hidden=!on})}});
+$('openBtn').addEventListener('click',function(){document.body.classList.add('opened');window.scrollTo(0,0);confetti(80);startMusic();var p=$('player');if(p.classList.contains('has'))p.style.display='';openModal('inviteModal')});
+
+/* images */
+var MOANA='<svg viewBox="0 0 200 200" role="img" aria-label="Illustration of a toddler island girl"><rect width="200" height="200" fill="#7CE7E8"/><circle cx="160" cy="40" r="22" fill="#FFD166"/><path d="M0 150Q60 130 100 150T200 145V200H0Z" fill="#20C5C9"/><path d="M45 200Q55 135 100 135T155 200Z" fill="#FF6B9A"/><circle cx="100" cy="95" r="42" fill="#3b2418"/><circle cx="100" cy="108" r="32" fill="#c68a5c"/><path d="M68 98Q100 60 132 98Q100 80 68 98Z" fill="#3b2418"/><circle cx="88" cy="108" r="3.5" fill="#222"/><circle cx="112" cy="108" r="3.5" fill="#222"/><path d="M90 121Q100 130 110 121" stroke="#7a3b2a" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="80" cy="118" r="5" fill="#ff9a8a" opacity=".6"/><circle cx="120" cy="118" r="5" fill="#ff9a8a" opacity=".6"/><text x="128" y="72" font-size="24">🌺</text></svg>';
+var CARA='<svg viewBox="0 0 200 200" role="img" aria-label="Placeholder for Cara\'s photo"><rect width="200" height="200" fill="#FFF8E7"/><text x="100" y="100" font-size="60" text-anchor="middle">🌺</text><text x="100" y="140" font-size="16" text-anchor="middle" fill="#087E8B" font-family="Georgia">Cara\'s photo</text></svg>';
+function img(box,src,ph,alt){var b=$(box);b.textContent='';if(src){var i=new Image();i.src=src;i.alt=alt;b.appendChild(i)}else b.innerHTML=ph}
+function renderMedia(){img('caraBox',CFG.cara,CARA,'Cara Celestine');img('moanaBox',CFG.moana,MOANA,'Young Moana');
+var g=$('grid');g.textContent='';
+if(!CFG.gallery.length){g.innerHTML='<div class="ph">🌺 🐚 🌴 Photos of Cara\'s little island memories are coming soon! 🌴 🐚 🌺</div>'}
+CFG.gallery.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Enlarge photo '+(i+1));var m=new Image();m.src=s;m.alt='Cara, photo '+(i+1);m.loading='lazy';b.appendChild(m);b.addEventListener('click',function(){openLb(i)});g.appendChild(b)});}
+var li=0,lastF=null;
+function openLb(i){li=i;lastF=document.activeElement;showLb();$('lb').classList.add('on');$('lbx').focus()}
+function showLb(){$('lbi').src=CFG.gallery[li];$('lbi').alt='Cara, photo '+(li+1)}
+function closeLb(){$('lb').classList.remove('on');if(lastF)lastF.focus()}
+function stepLb(d){var n=CFG.gallery.length;li=(li+d+n)%n;showLb()}
+$('lbx').onclick=closeLb;$('lbp').onclick=function(){stepLb(-1)};$('lbn').onclick=function(){stepLb(1)};
+$('lb').addEventListener('click',function(e){if(e.target===this)closeLb()});
+document.addEventListener('keydown',function(e){if(!$('lb').classList.contains('on'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')stepLb(-1);if(e.key==='ArrowRight')stepLb(1)});
+
+/* calendar */
+$('calBtn').addEventListener('click',function(){
+var esc=function(s){return s.replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;')};
+var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Cara Birthday//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH',
+'BEGIN:VTIMEZONE','TZID:Asia/Manila','BEGIN:STANDARD','DTSTART:19700101T000000','TZOFFSETFROM:+0800','TZOFFSETTO:+0800','TZNAME:PST','END:STANDARD','END:VTIMEZONE',
+'BEGIN:VEVENT','UID:cara-2nd-birthday-20261018@invitation','DTSTAMP:20260101T000000Z',
+'DTSTART;TZID=Asia/Manila:20261018T150000','DTEND;TZID=Asia/Manila:20261018T190000',
+"SUMMARY:Cara's 2nd Birthday Celebration",'LOCATION:'+esc(FIXED.venue+' – '+FIXED.loc),
+'DESCRIPTION:'+esc("Celebrating Cara Celestine Miñoza Tariao's 2nd birthday! Moana-inspired attire is welcome but optional. RSVP: "+FIXED.email),
+'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:Cara\'s birthday tomorrow!','END:VALARM','END:VEVENT','END:VCALENDAR'];
+var url=URL.createObjectURL(new Blob([L.join('\r\n')],{type:'text/calendar;charset=utf-8'}));
+var a=document.createElement('a');a.href=url;a.download='Cara-2nd-Birthday.ics';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},4000)});
+
+/* RSVP */
+var lastMail='';
+function rsvpBody(n,a,c,att,m){return "Hi Cara's Family,\n\nHere is our RSVP response for "+FIXED.name+"'s 2nd Birthday Celebration:\n\n• Guest Name(s): "+n+"\n• Attendance: "+att+"\n• Adults: "+a+" | Children: "+c+"\n• Message: "+(m||"Happy 2nd Birthday Cara!")+"\n\nEvent: "+FIXED.date+", "+FIXED.time+"\nLocation: "+FIXED.loc+"\n\nSee you at Metropolis Cebu Subdivision Clubhouse & Pool!"}
+$('rsvpForm').addEventListener('submit',function(e){e.preventDefault();var err=$('rsvpErr');err.textContent='';
+var n=$('gName').value.trim(),a=$('gAd').value.trim(),c=$('gCh').value.trim(),att=$('gAtt').value,m=$('gMsg').value.trim();
+if(!n){err.textContent='Please enter your name(s).';$('gName').focus();return}
+if(!/^\d+$/.test(a)){err.textContent='Adults must be 0 or more.';$('gAd').focus();return}
+if(!/^\d+$/.test(c)){err.textContent='Children must be 0 or more.';$('gCh').focus();return}
+if(+a+ +c===0&&att.indexOf('Yes')===0){err.textContent='Please enter at least one guest attending.';$('gAd').focus();return}
+var body=rsvpBody(n,a,c,att,m),sub="RSVP: Cara's 2nd Birthday Celebration";
+var gmail='https://mail.google.com/mail/?view=cm&fs=1&to='+FIXED.email+'&su='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+lastMail='mailto:'+FIXED.email+'?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body).replace(/%0A/g,'%0D%0A');
+$('rsvpText').value=body;$('mailAgain').href=lastMail;$('gmailAgain').href=gmail;
+var b=$('rsvpBtn');b.disabled=true;setTimeout(function(){b.disabled=false},4000);
+$('rsvpDone').hidden=false;$('rsvpDone').focus();confetti(60);
+var win=null;try{win=window.open(gmail,'_blank')}catch(x){}
+if(!win||win.closed||typeof win.closed==='undefined'){location.href=lastMail}else{try{win.opener=null}catch(x){}}});
+$('copyBtn').addEventListener('click',function(){var t=$('rsvpText'),ok=$('copyOk');
+function done(){ok.textContent='Copied! Paste it into an email to '+FIXED.email+'.'}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.value).then(done,fb)}else fb();
+function fb(){t.select();try{document.execCommand('copy')?done():ok.textContent='Please select the text and copy it manually.'}catch(x){ok.textContent='Please select the text and copy it manually.'}}});
+
+/* cake */
+var cake=$('cake'),wm=$('wishMsg');
+$('wishBtn').onclick=function(){cake.classList.remove('unlit','off');wm.textContent='Make a Wish for Cara! ✨';confetti(70);confetti(40,true);$('wishBtn').hidden=true;$('blowBtn').hidden=false;$('relightBtn').hidden=true};
+$('blowBtn').onclick=function(){cake.classList.add('off');wm.textContent='Happy 2nd Birthday, Cara! 🎉';confetti(80);$('blowBtn').hidden=true;$('relightBtn').hidden=false};
+$('relightBtn').onclick=function(){cake.classList.remove('off');wm.textContent='Make a Wish for Cara! ✨';confetti(40,true);$('relightBtn').hidden=true;$('blowBtn').hidden=false};
+
+/* island */
+var MS=["Sending tropical hugs to Cara!","You are part of Cara's magical adventure!","Let's make a splash of wonderful memories!","A little island magic just for you!"],mi=0;
+function isle(e){if(e.type==='keydown'&&e.key!=='Enter'&&e.key!==' ')return;e.preventDefault();$('isleMsg').textContent=MS[mi++%4]+' 🌺';confetti(14,true)}
+document.querySelectorAll('#isle [role=button]').forEach(function(g){g.addEventListener('click',isle);g.addEventListener('keydown',isle)});
+
+/* music */
+var DEF=["Happy Birthday to You - Instrumental","Moana Soundtrack","How Far I'll Go","You're Welcome","Tropical Island Birthday Music"].map(function(t){return{title:t,src:''}});
+var T=CFG.tracks.length?CFG.tracks:(OWNER?DEF:[]),ti=0,aud=$('aud'),pl=$('player');
+var playable=T.some(function(t){return t.src});
+function loadPlaylist(){var ul=$('pl');ul.textContent='';T.forEach(function(t,i){var li=document.createElement('li'),b=document.createElement('button');b.type='button';b.textContent=(i+1)+'. '+t.title+(t.src?'':' (no file)');b.className=i===ti?'cur':'';b.onclick=function(){sel(i,true)};li.appendChild(b);ul.appendChild(li)})}
+function sel(i,play){ti=i;var t=T[i];$('ttl').textContent=t.title;loadPlaylist();if(!t.src){aud.removeAttribute('src');setPlay(false);$('ttl').textContent=t.title+' – no audio file added';if(play)nextAvail(1);return}
+aud.src=t.src;if(play)aud.play().then(function(){setPlay(true)},function(){setPlay(false)})}
+function nextAvail(d){for(var k=1;k<=T.length;k++){var j=(ti+d*k+T.length*k)%T.length;if(T[j].src){sel(j,true);return}}}
+function setPlay(p){pl.classList.toggle('playing',p);$('pPlay').textContent=p?'⏸':'▶';$('pPlay').setAttribute('aria-label',p?'Pause':'Play')}
+if(T.length&&(playable||OWNER)){pl.classList.add('has');var f=T.findIndex(function(t){return t.src});sel(f<0?0:f,false)}
+$('pPlay').onclick=function(){if(!T[ti]||!T[ti].src){nextAvail(1);return}if(aud.paused){if(!aud.src)aud.src=T[ti].src;aud.play().then(function(){setPlay(true)},function(){$('ttl').textContent='Unable to play this file'})}else{aud.pause();setPlay(false)}};
+$('pNext').onclick=function(){nextAvail(1)};$('pPrev').onclick=function(){nextAvail(-1)};
+aud.addEventListener('ended',function(){nextAvail(1)});
+aud.addEventListener('error',function(){if(aud.getAttribute('src')){$('ttl').textContent=T[ti].title+' – cannot be played';setPlay(false);if(T.filter(function(t){return t.src}).length>1)setTimeout(function(){nextAvail(1)},800)}});
+aud.addEventListener('timeupdate',function(){if(aud.duration)$('pSeek').value=aud.currentTime/aud.duration*100});
+$('pSeek').oninput=function(){if(aud.duration)aud.currentTime=this.value/100*aud.duration};
+aud.volume=.7;$('pVol').oninput=function(){aud.volume=+this.value;aud.muted=false;$('pMute').textContent=this.value==0?'🔇':'🔊'};
+$('pMute').onclick=function(){aud.muted=!aud.muted;this.textContent=aud.muted?'🔇':'🔊';this.setAttribute('aria-label',aud.muted?'Unmute':'Mute')};
+$('plToggle').onclick=function(){var h=$('pl').hidden=!$('pl').hidden;this.setAttribute('aria-expanded',String(!h))};
+if(!pl.classList.contains('has'))pl.style.display='none';
+
+/* YouTube background music */
+var ytp=null,ytReady=false,ytWant=false,ytOn=false,ytFailed=false;
+function ytId(u){u=String(u||'').trim();var m=u.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:(/^[\w-]{11}$/.test(u)?u:'')}
+function ytBtns(){$('ytPlay').textContent=ytOn?'⏸':'▶';$('ytPlay').setAttribute('aria-label',ytOn?'Pause music':'Play music')}
+function mkYT(){if(ytp||!window.YT||!YT.Player)return;var id=ytId(CFG.yt),pv={playsinline:1,controls:0,rel:0,loop:1,playlist:id};if(/^https?:/.test(location.protocol))pv.origin=location.origin;
+ytp=new YT.Player('ytHost',{height:'1',width:'1',videoId:id,playerVars:pv,events:{onReady:function(){ytReady=true;if(ytWant)ytp.playVideo()},onStateChange:function(e){ytOn=e.data===1;if(ytOn&&!aud.paused){aud.pause();setPlay(false)}ytBtns()},onError:ytFail}})}
+function initYT(){if(!ytId(CFG.yt)||ytp)return;$('ytCtl').classList.add('has');if(window.YT&&YT.Player)return mkYT();window.onYouTubeIframeAPIReady=mkYT;if(!document.getElementById('ytapi')){var sc=document.createElement('script');sc.id='ytapi';sc.src='https://www.youtube.com/iframe_api';sc.onerror=ytFail;document.head.appendChild(sc)}}
+function ytFail(){ytFailed=true;ytOn=false;$('ytCtl').classList.remove('has');fallbackLocal()}
+function fallbackLocal(){var i=T.findIndex(function(t){return t.src});if(i>=0&&aud.paused&&ytWant)sel(i,true)}
+function startMusic(){ytWant=true;if(ytp&&ytReady){ytp.playVideo()}else if(!ytId(CFG.yt)){fallbackLocal()}else{setTimeout(function(){if(ytWant&&!ytOn&&!ytFailed&&!ytReady)ytFail()},8000)}}
+$('ytPlay').onclick=function(){if(!ytp||!ytReady)return;if(ytOn)ytp.pauseVideo();else ytp.playVideo()};
+$('ytMute').onclick=function(){if(!ytp||!ytReady)return;var m=ytp.isMuted();m?ytp.unMute():ytp.mute();this.textContent=m?'🔊':'🔇';this.setAttribute('aria-label',m?'Mute music':'Unmute music')};
+aud.addEventListener('play',function(){if(ytp&&ytOn)ytp.pauseVideo()});
+initYT();
+renderMedia();
+
+/* owner-only setup (never present in final export) */
+if(OWNER){var O=$('owner');
+O.innerHTML='<h2>🛠 Owner Setup</h2><p>Event details are locked. Add media, preview, then export. Guests never see this panel.</p>'+
+'<div class="blk"><label for="oc">Cara\'s photo</label><input id="oc" type="file" accept="image/*"></div>'+
+'<div class="blk"><label for="om">Young Moana image (legally obtained)</label><input id="om" type="file" accept="image/*"></div>'+
+'<div class="blk"><label for="og">Gallery photos (multiple)</label><input id="og" type="file" accept="image/*" multiple></div>'+
+'<div class="blk"><label for="oa">Music files (MP3/WAV/OGG, multiple)</label><input id="oa" type="file" accept="audio/*" multiple><small>Only use music you have the rights to use.</small></div>'+
+'<div class="blk"><label for="oy">YouTube music link (optional, plays when guest opens invitation)</label><input id="oy" type="text" placeholder="https://www.youtube.com/watch?v=..."><small>Use a video you may share. Works when the file is hosted online; may be blocked when opened from a local file.</small></div>'+
+'<p id="osz" role="status" style="font-weight:700"></p><div class="acts"><button class="btn alt" id="oclr" type="button">CLEAR ALL MEDIA</button><button class="btn alt" id="opv" type="button">PREVIEW</button><button class="btn" id="oex" type="button">💾 EXPORT FINAL HTML</button></div>';
+var tb=document.createElement('button');tb.id='obtn';tb.className='btn alt';tb.type='button';tb.textContent='🛠 Owner Setup';tb.style.cssText='position:fixed;top:10px;left:10px;z-index:120;min-height:40px;padding:6px 14px';tb.onclick=function(){O.classList.add('on')};document.body.appendChild(tb);
+O.classList.add('on');
+var rd=function(f){return new Promise(function(r,j){var x=new FileReader();x.onload=function(){r(x.result)};x.onerror=j;x.readAsDataURL(f)})};
+var shrink=function(f){return rd(f).then(function(u){return new Promise(function(r){var i=new Image();i.onload=function(){var m=1400,s=Math.min(1,m/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*s;c.height=i.height*s;c.getContext('2d').drawImage(i,0,0,c.width,c.height);r(c.toDataURL('image/jpeg',.82))};i.onerror=function(){r(u)};i.src=u})})};
+var upd=function(){var n=(CFG.cara||'').length+(CFG.moana||'').length+CFG.gallery.reduce(function(a,s){return a+s.length},0)+CFG.tracks.reduce(function(a,t){return a+t.src.length},0);
+$('osz').textContent='Estimated export size: '+(n/1048576).toFixed(1)+' MB'+(n>15e6?' ⚠ Large file – may be slow to open or share. Consider fewer/shorter files.':'');
+renderMedia();if(CFG.tracks.length){T=CFG.tracks;ti=0;pl.classList.add('has');pl.style.display='';sel(0,false)}};
+$('oc').onchange=function(){if(this.files[0])shrink(this.files[0]).then(function(u){CFG.cara=u;upd()})};
+$('om').onchange=function(){if(this.files[0])shrink(this.files[0]).then(function(u){CFG.moana=u;upd()})};
+$('og').onchange=function(){Promise.all([].map.call(this.files,shrink)).then(function(a){CFG.gallery=CFG.gallery.concat(a);upd()})};
+$('oa').onchange=function(){var fs=[].slice.call(this.files);Promise.all(fs.map(rd)).then(function(a){a.forEach(function(u,i){CFG.tracks.push({title:fs[i].name.replace(/\.[^.]+$/,''),src:u})});upd()})};
+$('oy').onchange=function(){CFG.yt=ytId(this.value)?this.value.trim():'';if(this.value&&!CFG.yt)alert('Could not read a YouTube video ID from that link.');initYT()};
+$('oclr').onclick=function(){CFG.cara=CFG.moana='';CFG.gallery=[];CFG.tracks=[];aud.pause();aud.removeAttribute('src');T=DEF;sel(0,false);upd()};
+$('opv').onclick=function(){O.classList.remove('on');document.body.classList.add('opened')};
+$('oex').onclick=function(){var n=JSON.stringify(CFG).length;if(n>15e6&&!confirm('The export will be about '+(n/1048576).toFixed(0)+' MB. Continue?'))return;
+aud.pause();var cl=document.documentElement.cloneNode(true);
+
+['owner','obtn'].forEach(function(i){var e=cl.querySelector('#'+i);if(e)e.remove()});
+cl.querySelectorAll('.fl,.sparkle,.bub').forEach(function(e){e.remove()});
+cl.querySelector('body').classList.remove('opened','hidden-tab');
+cl.querySelectorAll('.reveal').forEach(function(e){e.classList.remove('in')});
+['rsvpDone'].forEach(function(i){cl.querySelector('#'+i).hidden=true});
+cl.querySelector('#cake').className='cake unlit';
+cl.querySelectorAll('.modal').forEach(function(m){m.classList.remove('on')});
+cl.querySelectorAll('[role=tab]').forEach(function(t,k){t.setAttribute('aria-selected',String(k===0));if(k===0)t.removeAttribute('tabindex');else t.setAttribute('tabindex','-1')});
+cl.querySelectorAll('.panel').forEach(function(p,k){if(k===0)p.removeAttribute('hidden');else p.setAttribute('hidden','')});
+cl.querySelectorAll('.sub').forEach(function(b,k){b.setAttribute('aria-pressed',String(k===0))});
+cl.querySelectorAll('.sp').forEach(function(p,k){if(k===0)p.removeAttribute('hidden');else p.setAttribute('hidden','')});
+cl.querySelector('#ytWrap').innerHTML='<div id="ytHost"></div>';cl.querySelector('#ytCtl').className='';
+cl.querySelectorAll('script[src]').forEach(function(e){e.remove()});
+cl.querySelector('#gmailAgain').setAttribute('href','#');cl.querySelector('#rsvpText').value='';
+['grid','pl','caraBox','moanaBox','isleMsg','wishMsg'].forEach(function(i){cl.querySelector('#'+i).textContent=''});
+var a=cl.querySelector('#aud');a.removeAttribute('src');
+var pp=cl.querySelector('#player');pp.className='';pp.removeAttribute('style');
+
+var fin=JSON.stringify({final:true,yt:CFG.yt||'',cara:CFG.cara,moana:CFG.moana,gallery:CFG.gallery,tracks:CFG.tracks}).replace(/</g,'\\u003c');
+cl.querySelector('#cfg').textContent=fin;
+var html='<!DOCTYPE html>\n'+cl.outerHTML;
+var u=URL.createObjectURL(new Blob([html],{type:'text/html'})),d=document.createElement('a');d.href=u;d.download='Cara-Moana-Invitation-FINAL.html';document.body.appendChild(d);d.click();d.remove();setTimeout(function(){URL.revokeObjectURL(u)},8000)};
+upd();}
+})();
+</script>
+
+
+</body></html>
